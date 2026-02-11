@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compound Interest Calculator - Free Online Tool | CompoundCalc.org</title>
+  <meta name="description" content="Free compound interest calculator. See how your money grows over time with daily, monthly, or annual compounding. Plan your savings, investments, and retirement.">
+  <link rel="canonical" href="https://compoundcalc.org/">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Compound Interest Calculator - Free Online Tool">
+  <meta property="og:description" content="Free compound interest calculator. See how your money grows over time with daily, monthly, or annual compounding.">
+  <meta property="og:url" content="https://compoundcalc.org/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CompoundCalc.org">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Compound Interest Calculator - Free Online Tool">
+  <meta name="twitter:description" content="Free compound interest calculator. See how your money grows over time with daily, monthly, or annual compounding.">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8767713037568144" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #fff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --muted: #64748b;
+      --accent: #1d4ed8;
+      --accent-light: #dbeafe;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header */
+    .site-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-left: 1.5rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 4rem 0 3rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Calculator Card */
+    .calculator-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2rem 0 3rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    .calculator-card h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .form-group input, .form-group select {
+      padding: 0.7rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color 0.15s;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+
+    .btn-calculate {
+      grid-column: 1 / -1;
+      padding: 0.85rem 2rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.15s;
+      margin-top: 0.5rem;
+    }
+
+    .btn-calculate:hover {
+      background: #1e40af;
+    }
+
+    .result-panel {
+      grid-column: 1 / -1;
+      background: var(--accent-light);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: none;
+    }
+
+    .result-panel.visible {
+      display: block;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+    }
+
+    .result-row .label {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .result-row .value {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .result-row.total .value {
+      color: var(--accent);
+      font-size: 1.15rem;
+    }
+
+    /* Ad Slot */
+    .ad-slot {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 2rem 0;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Blog Section */
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .blog-list {
+      display: grid;
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .blog-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .blog-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(29, 78, 216, 0.08);
+      text-decoration: none;
+    }
+
+    .blog-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .blog-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .blog-card .arrow {
+      font-size: 1.25rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+
+    /* How it Works */
+    .how-it-works {
+      margin: 2rem 0 3rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .step h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .step p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .site-footer p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .calculator-card {
+        padding: 1.5rem;
+      }
+
+      .blog-card {
+        padding: 1.25rem;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Compound Interest Calculator",
+    "url": "https://compoundcalc.org/",
+    "description": "Free compound interest calculator. See how your money grows over time with daily, monthly, or annual compounding.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">Compound<span>Calc</span></a>
+      <nav>
+        <a href="/">Calculator</a>
+        <a href="/blog/compound-interest-complete-guide-2026.html">Guide</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <section class="hero">
+        <h1>Compound Interest Calculator</h1>
+        <p>See how your money grows over time. Enter your details below and watch the power of compounding turn your savings into serious wealth.</p>
+      </section>
+
+      <section class="calculator-card" id="calculator">
+        <h2>Calculate Your Returns</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="principal">Initial Investment ($)</label>
+            <input type="number" id="principal" value="10000" min="0" step="100">
+          </div>
+          <div class="form-group">
+            <label for="monthly">Monthly Contribution ($)</label>
+            <input type="number" id="monthly" value="500" min="0" step="50">
+          </div>
+          <div class="form-group">
+            <label for="rate">Annual Interest Rate (%)</label>
+            <input type="number" id="rate" value="7" min="0" step="0.1" max="50">
+          </div>
+          <div class="form-group">
+            <label for="years">Time Period (Years)</label>
+            <input type="number" id="years" value="20" min="1" step="1" max="100">
+          </div>
+          <div class="form-group">
+            <label for="compound">Compounding Frequency</label>
+            <select id="compound">
+              <option value="365">Daily</option>
+              <option value="12" selected>Monthly</option>
+              <option value="4">Quarterly</option>
+              <option value="1">Annually</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>&nbsp;</label>
+            <button class="btn-calculate" onclick="calculate()">Calculate</button>
+          </div>
+          <div class="result-panel" id="results">
+            <div class="result-row total">
+              <span class="label">Future Value</span>
+              <span class="value" id="futureValue">-</span>
+            </div>
+            <div class="result-row">
+              <span class="label">Total Contributions</span>
+              <span class="value" id="totalContrib">-</span>
+            </div>
+            <div class="result-row">
+              <span class="label">Total Interest Earned</span>
+              <span class="value" id="totalInterest">-</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ad Slot 1 -->
+      <div class="ad-slot">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-8767713037568144"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <section class="how-it-works">
+        <h2 class="section-title">How Compound Interest Works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Invest Your Money</h3>
+            <p>Start with an initial deposit and set up regular monthly contributions to build your portfolio.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Earn Interest</h3>
+            <p>Your money earns interest based on the annual rate and compounding frequency you choose.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Interest Compounds</h3>
+            <p>You earn interest on your interest. Over time, this snowball effect accelerates your wealth.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Learn More</h2>
+        <div class="blog-list">
+          <a href="/blog/compound-interest-complete-guide-2026.html" class="blog-card">
+            <div>
+              <h3>Compound Interest: A Complete Guide for 2026</h3>
+              <p>Everything you need to know about compound interest, from the basics to advanced strategies for maximizing your returns.</p>
+            </div>
+            <span class="arrow">&rarr;</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Ad Slot 2 -->
+      <div class="ad-slot">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-8767713037568144"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 CompoundCalc.org. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function formatCurrency(n) {
+      return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    function calculate() {
+      var P = parseFloat(document.getElementById('principal').value) || 0;
+      var PMT = parseFloat(document.getElementById('monthly').value) || 0;
+      var r = (parseFloat(document.getElementById('rate').value) || 0) / 100;
+      var t = parseFloat(document.getElementById('years').value) || 0;
+      var n = parseInt(document.getElementById('compound').value);
+
+      // Future value of principal
+      var fvPrincipal = P * Math.pow(1 + r / n, n * t);
+
+      // Future value of monthly contributions (series)
+      var fvContributions = 0;
+      var totalMonths = t * 12;
+      for (var m = 0; m < totalMonths; m++) {
+        var yearsRemaining = (totalMonths - m) / 12;
+        fvContributions += PMT * Math.pow(1 + r / n, n * yearsRemaining);
+      }
+
+      var futureValue = fvPrincipal + fvContributions;
+      var totalContributions = P + (PMT * totalMonths);
+      var totalInterest = futureValue - totalContributions;
+
+      document.getElementById('futureValue').textContent = formatCurrency(futureValue);
+      document.getElementById('totalContrib').textContent = formatCurrency(totalContributions);
+      document.getElementById('totalInterest').textContent = formatCurrency(totalInterest);
+      document.getElementById('results').classList.add('visible');
+    }
+
+    // Calculate on page load
+    calculate();
+  </script>
+
+</body>
+</html>
