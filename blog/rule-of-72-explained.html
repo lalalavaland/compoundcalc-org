@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Rule of 72 Explained: How to Estimate When Your Money Doubles | CompoundCalc.org</title>
+  <meta name="description" content="Learn the Rule of 72: a simple formula to estimate how long it takes your investment to double. Includes examples at different interest rates, accuracy analysis, and why it matters for long-term investing.">
+  <link rel="canonical" href="https://compoundcalc.org/blog/rule-of-72-explained.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="The Rule of 72 Explained: How to Estimate When Your Money Doubles">
+  <meta property="og:description" content="Learn the Rule of 72: a simple formula to estimate how long it takes your investment to double. Examples, accuracy analysis, and practical applications.">
+  <meta property="og:url" content="https://compoundcalc.org/blog/rule-of-72-explained.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CompoundCalc.org">
+  <meta property="article:published_time" content="2026-02-11T00:00:00Z">
+  <meta property="article:modified_time" content="2026-02-11T00:00:00Z">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Rule of 72 Explained: How to Estimate When Your Money Doubles">
+  <meta name="twitter:description" content="Learn the Rule of 72: a simple formula to estimate how long it takes your investment to double. Examples and practical applications.">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8767713037568144" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #fff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --muted: #64748b;
+      --accent: #1d4ed8;
+      --accent-light: #dbeafe;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .site-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .container-wide {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-left: 1.5rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .article-header {
+      padding: 3rem 0 2rem;
+      text-align: center;
+    }
+
+    .article-header .breadcrumb {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .article-header .breadcrumb a {
+      color: var(--muted);
+    }
+
+    .article-header h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .article-header .meta {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .article-body {
+      padding-bottom: 3rem;
+    }
+
+    .article-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      padding-top: 0.5rem;
+    }
+
+    .article-body h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 2rem 0 0.75rem;
+    }
+
+    .article-body p {
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 0 0 1.25rem 1.5rem;
+      font-size: 1.05rem;
+    }
+
+    .article-body li {
+      margin-bottom: 0.5rem;
+    }
+
+    .article-body strong {
+      font-weight: 600;
+    }
+
+    .callout {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      font-size: 1rem;
+    }
+
+    .callout p {
+      margin-bottom: 0;
+    }
+
+    .math-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.95rem;
+      overflow-x: auto;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .comparison-table th, .comparison-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comparison-table th {
+      background: var(--bg);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+    }
+
+    .comparison-table td {
+      background: var(--surface);
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .cta-box {
+      background: var(--surface);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      margin: 2.5rem 0;
+    }
+
+    .cta-box h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .cta-box a.btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.15s;
+    }
+
+    .cta-box a.btn:hover {
+      background: #1e40af;
+      text-decoration: none;
+    }
+
+    .ad-slot {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 2rem 0;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .site-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .site-footer p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin: 0 0.5rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      .article-header h1 {
+        font-size: 1.6rem;
+      }
+
+      .article-body h2 {
+        font-size: 1.3rem;
+      }
+
+      .article-body p, .article-body ul, .article-body ol {
+        font-size: 1rem;
+      }
+
+      .comparison-table {
+        font-size: 0.85rem;
+      }
+
+      .comparison-table th, .comparison-table td {
+        padding: 0.5rem 0.6rem;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Rule of 72 Explained: How to Estimate When Your Money Doubles",
+    "description": "Learn the Rule of 72: a simple formula to estimate how long it takes your investment to double. Includes examples at different interest rates, accuracy analysis, and why it matters for long-term investing.",
+    "url": "https://compoundcalc.org/blog/rule-of-72-explained.html",
+    "datePublished": "2026-02-11",
+    "dateModified": "2026-02-11",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CompoundCalc.org",
+      "url": "https://compoundcalc.org/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://compoundcalc.org/blog/rule-of-72-explained.html"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container-wide header-inner">
+      <a href="/" class="logo">Compound<span>Calc</span></a>
+      <nav>
+        <a href="/">Calculator</a>
+        <a href="/blog/compound-interest-complete-guide-2026.html">Guide</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="article-header">
+        <p class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/">Blog</a></p>
+        <h1>The Rule of 72 Explained: How to Quickly Estimate When Your Money Doubles</h1>
+        <p class="meta">Published February 11, 2026 &middot; 10 min read</p>
+      </div>
+
+      <article class="article-body">
+
+        <p>Imagine you are at a dinner party and someone mentions they are earning 6% on their investments. You want to know roughly how long it will take for that money to double, but you do not have a calculator handy. This is exactly the scenario the Rule of 72 was designed for. It is one of the most elegant shortcuts in all of personal finance: a simple mental math trick that gives you a surprisingly accurate estimate of how long it takes for an investment to double in value.</p>
+
+        <p>In this guide, we will break down exactly what the Rule of 72 is, how it works, walk through examples at various interest rates, test its accuracy, and explain why this simple formula is one of the most important concepts for long-term investors to understand.</p>
+
+        <h2>What Is the Rule of 72?</h2>
+
+        <p>The Rule of 72 is a quick estimation formula used to determine how many years it takes for an investment to double, given a fixed annual rate of return. The formula is remarkably simple:</p>
+
+        <div class="math-block">
+Years to Double = 72 / Annual Interest Rate (%)
+        </div>
+
+        <p>That is it. Divide 72 by whatever annual return you are earning, and you get the approximate number of years until your money doubles. No logarithms, no exponents, no financial calculator required.</p>
+
+        <p>For example, if your investment earns 8% per year, it will take approximately 72 / 8 = 9 years for your money to double. Start with $10,000 and in about 9 years you will have $20,000 (assuming the returns are compounded and reinvested).</p>
+
+        <div class="callout">
+          <p><strong>Why 72?</strong> The number 72 is used because it is a convenient approximation of the natural logarithm calculation needed to compute exact doubling time. It also has many divisors (1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72), making it easy to divide mentally for common interest rates.</p>
+        </div>
+
+        <h2>Examples at Different Interest Rates</h2>
+
+        <p>Let us walk through the Rule of 72 at a range of interest rates you might encounter in real-world investing and savings scenarios. These examples illustrate just how dramatically the doubling time changes with even small shifts in return.</p>
+
+        <h3>High-Yield Savings Account: 4.5%</h3>
+
+        <p>In 2026, many high-yield savings accounts offer around 4.5% APY. Using the Rule of 72:</p>
+
+        <div class="math-block">
+72 / 4.5 = 16 years to double
+        </div>
+
+        <p>If you deposit $25,000 into a high-yield savings account earning 4.5%, it will take approximately 16 years for that balance to reach $50,000, assuming the rate stays constant and you make no additional deposits. This highlights that while savings accounts are safe and liquid, they are not the fastest path to wealth accumulation.</p>
+
+        <h3>Bond Portfolio: 5%</h3>
+
+        <p>A diversified bond portfolio might yield around 5% annually. Applying the rule:</p>
+
+        <div class="math-block">
+72 / 5 = 14.4 years to double
+        </div>
+
+        <p>Roughly 14 and a half years. If you invested $50,000 in bonds at this rate, you would have approximately $100,000 in about 14.4 years. Bonds are generally less volatile than stocks, but the longer doubling time reflects their more modest returns.</p>
+
+        <h3>Balanced Portfolio (Stocks and Bonds): 7%</h3>
+
+        <p>A balanced portfolio of stocks and bonds has historically returned around 7% annually after inflation. This is a common benchmark used in retirement planning:</p>
+
+        <div class="math-block">
+72 / 7 = 10.3 years to double
+        </div>
+
+        <p>Just over a decade. This is why financial advisors frequently use the 7% figure when projecting long-term growth. A $100,000 portfolio growing at 7% becomes approximately $200,000 in about 10 years, $400,000 in 20 years, and $800,000 in 30 years. Each doubling builds on the last, which is the fundamental power of compound interest.</p>
+
+        <h3>S&P 500 Historical Average: 10%</h3>
+
+        <p>The S&P 500 has returned roughly 10% annually on average before inflation over the long term (including dividends). At this rate:</p>
+
+        <div class="math-block">
+72 / 10 = 7.2 years to double
+        </div>
+
+        <p>Your money doubles roughly every 7 years. This means a $10,000 investment at age 25 could potentially grow to $20,000 by age 32, $40,000 by age 39, $80,000 by age 46, $160,000 by age 53, and $320,000 by age 60. Five doublings, turning $10,000 into $320,000 with zero additional contributions. That is the compounding snowball in action.</p>
+
+        <h3>Aggressive Growth: 12%</h3>
+
+        <p>Some aggressive growth portfolios or successful individual stock picks might achieve 12% returns over certain periods:</p>
+
+        <div class="math-block">
+72 / 12 = 6 years to double
+        </div>
+
+        <p>At 12%, your money doubles every 6 years. While returns this high are achievable over certain stretches, sustaining 12% annually over decades is difficult and carries significant risk. The Rule of 72 helps you set realistic expectations by showing what different return levels actually mean in practical terms.</p>
+
+        <h2>Full Reference Table</h2>
+
+        <p>Here is a comprehensive table showing the Rule of 72 estimate alongside the actual (exact) doubling time calculated using logarithms, so you can see how accurate the approximation really is:</p>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Annual Rate</th>
+              <th>Rule of 72 Estimate</th>
+              <th>Actual Doubling Time</th>
+              <th>Difference</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2%</td>
+              <td>36.0 years</td>
+              <td>35.0 years</td>
+              <td>+1.0 year</td>
+            </tr>
+            <tr>
+              <td>3%</td>
+              <td>24.0 years</td>
+              <td>23.4 years</td>
+              <td>+0.6 years</td>
+            </tr>
+            <tr>
+              <td>4%</td>
+              <td>18.0 years</td>
+              <td>17.7 years</td>
+              <td>+0.3 years</td>
+            </tr>
+            <tr>
+              <td>5%</td>
+              <td>14.4 years</td>
+              <td>14.2 years</td>
+              <td>+0.2 years</td>
+            </tr>
+            <tr>
+              <td>6%</td>
+              <td>12.0 years</td>
+              <td>11.9 years</td>
+              <td>+0.1 years</td>
+            </tr>
+            <tr>
+              <td>7%</td>
+              <td>10.3 years</td>
+              <td>10.2 years</td>
+              <td>+0.1 years</td>
+            </tr>
+            <tr>
+              <td>8%</td>
+              <td>9.0 years</td>
+              <td>9.0 years</td>
+              <td>0.0 years</td>
+            </tr>
+            <tr>
+              <td>9%</td>
+              <td>8.0 years</td>
+              <td>8.0 years</td>
+              <td>0.0 years</td>
+            </tr>
+            <tr>
+              <td>10%</td>
+              <td>7.2 years</td>
+              <td>7.3 years</td>
+              <td>-0.1 years</td>
+            </tr>
+            <tr>
+              <td>12%</td>
+              <td>6.0 years</td>
+              <td>6.1 years</td>
+              <td>-0.1 years</td>
+            </tr>
+            <tr>
+              <td>15%</td>
+              <td>4.8 years</td>
+              <td>5.0 years</td>
+              <td>-0.2 years</td>
+            </tr>
+            <tr>
+              <td>18%</td>
+              <td>4.0 years</td>
+              <td>4.2 years</td>
+              <td>-0.2 years</td>
+            </tr>
+            <tr>
+              <td>24%</td>
+              <td>3.0 years</td>
+              <td>3.2 years</td>
+              <td>-0.2 years</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>As you can see, the Rule of 72 is most accurate for interest rates between 4% and 12%, which conveniently covers the range of returns most investors encounter. At 8%, the estimate is essentially perfect. The further you move from this sweet spot, the less precise the estimate becomes, but it is still a very useful approximation even at higher or lower rates.</p>
+
+        <!-- Ad Slot 1 -->
+        <div class="ad-slot">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-8767713037568144"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <h2>The Math Behind the Rule of 72</h2>
+
+        <p>For those curious about why this works, the exact formula for calculating doubling time uses the natural logarithm:</p>
+
+        <div class="math-block">
+Exact Doubling Time = ln(2) / ln(1 + r)<br><br>
+Where r is the annual interest rate as a decimal.<br><br>
+ln(2) = 0.6931<br><br>
+For small values of r, ln(1 + r) is approximately equal to r.<br>
+So: Doubling Time ≈ 0.6931 / r<br><br>
+Multiplying both numerator and denominator by 100:<br>
+Doubling Time ≈ 69.31 / (r x 100)<br><br>
+69.31 is rounded up to 72 because 72 is more divisible<br>
+and gives slightly better results for typical interest rates.
+        </div>
+
+        <p>The approximation ln(1 + r) is approximately equal to r works well for small rates, which is why the Rule of 72 is most accurate at lower interest rates. The bump from 69.31 to 72 compensates for the error that creeps in at moderate rates, making 72 the optimal number for the 4-12% range that matters most to investors.</p>
+
+        <h2>Variations: The Rule of 69.3 and the Rule of 70</h2>
+
+        <p>You may occasionally encounter two other versions of this rule:</p>
+
+        <p><strong>The Rule of 69.3</strong> uses the mathematically precise constant (ln(2) x 100 = 69.31). This is more accurate for continuously compounded interest but harder to do as mental math since 69.3 does not divide neatly by common interest rates.</p>
+
+        <p><strong>The Rule of 70</strong> is a compromise. It is slightly more accurate than 72 for lower interest rates (2-4%) and easier to divide than 69.3. Some finance textbooks prefer 70, and it works perfectly well for back-of-the-envelope calculations.</p>
+
+        <p>In practice, the differences between 69.3, 70, and 72 are negligible for everyday use. The Rule of 72 remains the most popular because 72 is the most mentally divisible number and produces the best results across the widest range of common rates.</p>
+
+        <h2>Practical Applications for Long-Term Investing</h2>
+
+        <p>The Rule of 72 is not just a party trick. It has serious practical applications that can improve your financial decision-making.</p>
+
+        <h3>1. Setting Retirement Goals</h3>
+
+        <p>Knowing your expected rate of return, you can quickly estimate how many times your money will double between now and retirement. If you are 30 years old and plan to retire at 65, you have 35 years. At a 7% return, your money doubles roughly every 10 years, giving you about 3.5 doublings. That means $100,000 today would grow to approximately $100,000 x 2^3.5 = $1,131,000 by retirement.</p>
+
+        <h3>2. Evaluating Investment Opportunities</h3>
+
+        <p>When someone pitches you an investment opportunity, the Rule of 72 is your first sanity check. If someone claims an investment will turn $50,000 into $200,000 in 5 years, that requires two doublings in 5 years. Using the Rule of 72 in reverse: if each doubling takes 2.5 years, the required return is 72 / 2.5 = 28.8% annually. Any legitimate investment offering nearly 29% annual returns should warrant extreme scrutiny.</p>
+
+        <h3>3. Understanding Inflation</h3>
+
+        <p>The Rule of 72 works for inflation too, and this is where it becomes sobering. At 3% inflation, the purchasing power of your money halves every 72 / 3 = 24 years. A dollar today will be worth about 50 cents in 24 years. This is why keeping large sums in a checking account earning 0.01% is effectively losing money. Your balance stays the same, but its real purchasing power steadily erodes.</p>
+
+        <h3>4. Comparing Savings Accounts</h3>
+
+        <p>Suppose you are choosing between two savings accounts: one offering 4% and another offering 5%. The difference seems small, just 1 percentage point. But the Rule of 72 reveals the impact: at 4%, your money doubles in 18 years; at 5%, it doubles in 14.4 years. That is a 3.6-year difference per doubling, which compounds into a substantial gap over a lifetime of saving.</p>
+
+        <h3>5. Understanding Debt</h3>
+
+        <p>The Rule of 72 is equally powerful for understanding how quickly debt grows. A credit card charging 18% interest will double your balance in just 72 / 18 = 4 years if you make no payments. A $5,000 credit card balance at 18% becomes $10,000 in 4 years, $20,000 in 8 years, and $40,000 in 12 years. This makes the urgency of paying off high-interest debt viscerally clear.</p>
+
+        <h2>Using the Rule of 72 in Reverse</h2>
+
+        <p>You can also use the Rule of 72 backward. If you know how quickly you want your money to double, you can calculate the required rate of return:</p>
+
+        <div class="math-block">
+Required Annual Return = 72 / Desired Years to Double<br><br>
+Want to double in 5 years?  72 / 5  = 14.4% required return<br>
+Want to double in 10 years? 72 / 10 = 7.2% required return<br>
+Want to double in 15 years? 72 / 15 = 4.8% required return<br>
+Want to double in 20 years? 72 / 20 = 3.6% required return
+        </div>
+
+        <p>This reverse application helps you set realistic expectations. If you need your money to double in 5 years, you need a 14.4% annual return, which is aggressive and risky. If you are comfortable with a 15-year timeline, a modest 4.8% return, achievable with a diversified bond portfolio, will get you there.</p>
+
+        <h2>Limitations of the Rule of 72</h2>
+
+        <p>While the Rule of 72 is a remarkably useful tool, it is important to understand its limitations:</p>
+
+        <ul>
+          <li><strong>Assumes a constant rate of return.</strong> In reality, stock market returns vary dramatically from year to year. The Rule of 72 works best as a long-term average projection, not a year-by-year prediction.</li>
+          <li><strong>Does not account for contributions or withdrawals.</strong> The rule calculates doubling time for a lump sum. If you are making regular contributions (which most investors are), your actual growth will be different.</li>
+          <li><strong>Ignores taxes and fees.</strong> Investment returns are often reduced by taxes on gains and management fees. A 10% gross return might be a 7-8% net return after costs, which changes the doubling time significantly.</li>
+          <li><strong>Less accurate at extreme rates.</strong> Below 2% or above 20%, the approximation error grows. For very low or very high rates, use the exact formula or a compound interest calculator like ours.</li>
+          <li><strong>Does not factor in inflation.</strong> A nominal 10% return with 3% inflation is really a 7% real return. Always consider whether you are using nominal or real rates.</li>
+        </ul>
+
+        <h2>Why the Rule of 72 Matters for Long-Term Investing</h2>
+
+        <p>The Rule of 72 matters because it makes the abstract concept of compound growth feel concrete and tangible. When someone says "7% annual returns," most people have no intuitive sense of what that means for their money. But when you say "your money doubles every 10 years," that creates an immediate, visceral understanding.</p>
+
+        <p>This intuitive grasp of compounding leads to better financial decisions. It motivates you to start investing earlier because you can see the cost of each lost doubling period. It helps you appreciate the impact of seemingly small differences in fees or returns. And it gives you a built-in detector for investment scams, because any promise that seems too good to be true can be quickly tested against the Rule of 72.</p>
+
+        <div class="callout">
+          <p><strong>The key insight:</strong> The Rule of 72 transforms compound interest from an abstract mathematical concept into something you can calculate in your head in two seconds. That accessibility is what makes it one of the most valuable tools in personal finance.</p>
+        </div>
+
+        <div class="cta-box">
+          <h3>Run Your Own Numbers</h3>
+          <p>Use our free compound interest calculator to see exactly how your investments grow over time.</p>
+          <a href="/" class="btn">Open Calculator</a>
+        </div>
+
+        <h2>The Bottom Line</h2>
+
+        <p>The Rule of 72 is one of those rare tools that is both simple enough to use in casual conversation and powerful enough to inform serious financial planning. By dividing 72 by your expected annual return, you instantly know how long it takes for your money to double. Use it to evaluate investments, understand debt, plan for retirement, and cut through the noise of financial marketing.</p>
+
+        <p>Remember: at 7% returns, your money doubles roughly every 10 years. That means every decade you delay investing costs you one entire doubling of your wealth. The math is clear, and the Rule of 72 makes it impossible to ignore. Start early, stay consistent, and let compounding do the heavy lifting.</p>
+
+        <!-- Ad Slot 2 -->
+        <div class="ad-slot">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-8767713037568144"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container-wide">
+      <p class="footer-links">
+        <a href="/privacy-policy.html">Privacy Policy</a> |
+        <a href="/terms-of-service.html">Terms of Service</a> |
+        <a href="/about.html">About</a> |
+        <a href="/contact.html">Contact</a>
+      </p>
+      <p>&copy; 2026 CompoundCalc.org. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
